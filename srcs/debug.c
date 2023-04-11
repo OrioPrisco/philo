@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/11 11:38:00 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/11 17:16:19 by OrioPrisc        ###   ########.fr       */
+/*   Created: 2023/04/11 16:57:52 by OrioPrisc         #+#    #+#             */
+/*   Updated: 2023/04/11 16:58:20 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "libft.h"
-#include "philo.h"
 #include "debug.h"
-#include "parse.h"
+#include "philo.h"
+#include <stdio.h>
 
-int	main(int argc, char **argv)
+void	dump_params(const t_params *params)
 {
-	t_params		params;
-	t_shared_data	shared;
-	pthread_mutex_t	*mutexes;
-
-	if (parse_args(&params, argc, argv))
-		return (1);
-	shared = (t_shared_data){0, params.numbr_philo};
-	mutexes = ft_calloc(sizeof(*mutexes), params.numbr_philo + 1);
-	dump_params(&params);
+	printf("numbr_philo : %zu\n", params->numbr_philo);
+	printf("time_to_die : %zu\n", params->time_to_die);
+	printf("time_to_eat : %zu\n", params->time_to_eat);
+	printf("time_to_slp : %zu\n", params->time_to_slp);
+	printf("binge_party : %d\n", params->binge_party);
+	if (params->binge_party)
+		printf("number_eats : %zu\n", params->number_eats);
 }
