@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 11:38:00 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/11 18:57:01 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/11 19:02:16 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ int	main(int argc, char **argv)
 	launch_philos(philos, threads, params.numbr_philo);
 	free(mutexes);
 	free(philos);
+	free(threads);
 	dump_params(&params);
 }
