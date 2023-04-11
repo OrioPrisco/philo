@@ -1,0 +1,12 @@
+take left/right fork first depending on philo_id % 2
+
+pthread_start takes a void * => pass a struct
+
+struct s_philo
+{
+	philo_id
+	pointer to one_philo_died //simulation must stop if a philo dies anywhere +sem/mutex
+	*left_fork //if there is only 1 philo, there is only 1 fork, so check for null once, or make a special cheat case idk
+	*right_fork
+	semaphore/mutex/whatevr can_print
+}

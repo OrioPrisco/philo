@@ -1,0 +1,10 @@
+*.o
+*.d
+*.cc
+philo
+philo_bonus
+*.swp
+*.swo
+.nfs*
+.gdb_history
+compile_commands.json
