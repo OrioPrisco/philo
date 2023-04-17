@@ -16,4 +16,4 @@ jobs:
       with:
         submodules: 'true'
     - name: Build with make
-      run: make
+      run: make philo
