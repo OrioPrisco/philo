@@ -6,7 +6,7 @@
 #    By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2023/04/11 18:54:13 by OrioPrisc        ###   ########.fr        #
+#    Updated: 2023/04/14 19:17:51 by OrioPrisc        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ BONUS			=	philo_bonus
 
 OBJ_FOLDER		=	objs/
 
-CFLAGS			=	-Wall -Wextra -Werror -g -D OUTPUT_DBG=0
+CFLAGS			=	-Wall -Wextra -Werror -g
 
 SRC_FOLDER		=	srcs/
 
