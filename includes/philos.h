@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:53:34 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/17 18:33:27 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/17 19:28:50 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,15 @@ typedef struct s_philo
 	t_philo_data	data;
 	pthread_t		thread;
 }	t_philo;
+
+typedef enum e_action
+{
+	TAKE_FORK,
+	SLEEP,
+	EAT,
+	THINK,
+	DIE,
+}	t_action;
 
 void	populate_philos(t_philo *philos, pthread_mutex_t *mutexes,
 			t_shared_data *data, const t_params *params);
