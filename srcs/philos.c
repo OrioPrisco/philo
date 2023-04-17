@@ -12,6 +12,7 @@
 
 #include "philos.h"
 #include "philo.h"
+#include "shared_data.h"
 #include <pthread.h>
 #include <unistd.h>
 #include <stdio.h>

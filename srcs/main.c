@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 11:38:00 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/17 12:03:25 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/17 18:35:36 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "philos.h"
 #include "debug.h"
 #include "parse.h"
+#include "shared_data.h"
 
 int	main(int argc, char **argv)
 {
