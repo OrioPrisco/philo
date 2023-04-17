@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:58:55 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/11 17:19:02 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/14 19:09:16 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ _Bool	parse_args(t_params *params, int argc, char **argv)
 	_Bool	err;
 
 	err = 0;
-	if (argc < 4)
+	if (argc < 5)
 		return (printf("Too few args\n"), 1);
 	if (argc > 6)
 		return (printf("Too many args\n"), 1);

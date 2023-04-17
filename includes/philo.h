@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:53:34 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/11 18:55:02 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/14 11:56:43 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,13 @@ typedef struct s_params
 	size_t	number_eats;
 }	t_params;
 
+// reasons for should stop can be :
+// someone died
+// error in initialization
+// all philos ate
 typedef struct s_shared_data
 {
-	_Bool	someone_died;
+	_Bool	should_stop;
 	size_t	hungry_philos;
 }	t_shared_data;
 
