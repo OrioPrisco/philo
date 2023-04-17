@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 18:30:09 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/17 11:51:07 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/17 18:36:19 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	populate_philos(t_philo *philos, pthread_mutex_t *mutexes,
 			mutexes + i,
 			mutexes + i + 1,
 			mutexes + params->numbr_philo,
-			data
+			data,
+			0
 		};
 		i++;
 	}

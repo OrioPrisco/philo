@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:53:34 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/17 11:50:32 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/17 18:33:27 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <pthread.h>
 # include <stddef.h>
-# include <sys/time.h>
+# include "philo_time.h"
 
 typedef struct s_params			t_params;
 typedef struct s_shared_data	t_shared_data;
@@ -30,6 +30,7 @@ typedef struct s_philo_data
 	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	*shared_data_lock;
 	t_shared_data	*shared_data;
+	t_ms			last_eat;
 }	t_philo_data;
 
 typedef struct s_philo
