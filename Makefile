@@ -6,7 +6,7 @@
 #    By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2023/04/17 14:45:23 by OrioPrisc        ###   ########.fr        #
+#    Updated: 2023/04/18 14:20:39 by orio             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRC				=	main.c\
 					parse.c\
 					debug.c\
 					philos.c\
+					time.c\
 
 BONUS_SRC		=	
 
