@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 11:38:00 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/17 18:35:36 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/18 18:38:56 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	main(int argc, char **argv)
 	shared_m = mutexes + params.numbr_philo;
 	if (!mutexes || ! philos)
 		return (free(mutexes), free(philos), printf("Malloc error !\n"), 1);
+	params.program_start = get_ms();
 	populate_philos(philos, mutexes, &shared, &params);
 	if (launch_philos(philos, params.numbr_philo, &shared, shared_m)
 		|| (join_philos(philos, params.numbr_philo, shared_m), 0))
