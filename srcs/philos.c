@@ -25,7 +25,6 @@ void	populate_philos(t_philo *philos, pthread_mutex_t *mutexes,
 	i = 0;
 	while (i < params->numbr_philo + 1)
 	{
-		printf("%zu\n", i);
 		pthread_mutex_init(mutexes + i++, NULL);
 	}
 	i = 0;
