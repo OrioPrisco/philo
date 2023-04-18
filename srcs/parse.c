@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:58:55 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/14 19:09:16 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/18 15:48:24 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ _Bool	parse_args(t_params *params, int argc, char **argv)
 			&err, sizeof(params->time_to_eat), 3);
 	params->time_to_slp = ft_strtol_err(argv[4],
 			&err, sizeof(params->time_to_slp), 4);
-	params->binge_party = argc == 6;
-	if (params->binge_party)
+	params->binge_party = argc == 5;
+	if (!params->binge_party)
 		params->number_eats = ft_strtol_err(argv[5],
 				&err, sizeof(params->number_eats), 5);
 	return (err);
