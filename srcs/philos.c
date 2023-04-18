@@ -38,7 +38,7 @@ void	populate_philos(t_philo *philos, pthread_mutex_t *mutexes,
 			mutexes + i + 1,
 			mutexes + params->numbr_philo,
 			data,
-			0
+			params->program_start,
 		};
 		i++;
 	}
