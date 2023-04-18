@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 		return (free(mutexes), free(philos), printf("Malloc error !\n"), 1);
 	populate_philos(philos, mutexes, &shared, &params);
 	if (launch_philos(philos, params.numbr_philo, &shared, shared_m)
-		|| (join_philos(philos, params.numbr_philo, &shared, shared_m), 0))
+		|| (join_philos(philos, params.numbr_philo, shared_m), 0))
 		printf("Error Launching threads !\n");
 	free(mutexes);
 	free(philos);

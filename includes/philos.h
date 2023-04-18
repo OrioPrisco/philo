@@ -52,6 +52,6 @@ void	populate_philos(t_philo *philos, pthread_mutex_t *mutexes,
 			t_shared_data *data, const t_params *params);
 _Bool	launch_philos(t_philo *philos, size_t philo_num, t_shared_data *shared,
 			pthread_mutex_t *shared_data_mutex);
-void	join_philos(t_philo *philos, size_t to_join, t_shared_data *shared,
+void	join_philos(t_philo *philos, size_t to_join,
 			pthread_mutex_t *shared_data_mutex);
 #endif

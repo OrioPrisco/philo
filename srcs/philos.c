@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 18:30:09 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/17 18:36:19 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/18 15:42:20 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,12 @@ void	*do_nothing(void *foo)
 	}
 }
 
-void	join_philos(t_philo *philos, size_t to_join, t_shared_data *shared,
+void	join_philos(t_philo *philos, size_t to_join,
 	pthread_mutex_t *shared_data_mutex)
 {
 	size_t	i;
 
 	i = 0;
-	pthread_mutex_lock(shared_data_mutex);
-	shared->should_stop = 1;
-	pthread_mutex_unlock(shared_data_mutex);
 	while (i < to_join)
 		pthread_join(philos[i++].thread, NULL);
 	while (i < to_join)
@@ -96,7 +93,12 @@ _Bool	launch_philos(t_philo *philos, size_t philo_num, t_shared_data *shared,
 	{
 		if (pthread_create(&philos[i].thread, NULL, do_nothing,
 				&philos[i].data))
-			return (join_philos(philos, i, shared, shared_data_mutex), 1);
+		{
+			pthread_mutex_lock(shared_data_mutex);
+			shared->should_stop = 1;
+			pthread_mutex_unlock(shared_data_mutex);
+			return (join_philos(philos, i, shared_data_mutex), 1);
+		}
 		i++;
 	}
 	return (0);
