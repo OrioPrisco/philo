@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 18:30:09 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/18 18:50:50 by orio             ###   ########.fr       */
+/*   Updated: 2023/04/20 17:31:48 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ void	populate_philos(t_philo *philos, pthread_mutex_t *mutexes,
 			params,
 			i,
 			params->number_eats,
-			mutexes + i,
-			mutexes + i + 1,
+		{mutexes + i, 0},
+		{mutexes + i + 1, 0},
 			mutexes + params->numbr_philo,
 			data,
 			params->program_start,
 		};
 		i++;
 	}
-	philos[params->numbr_philo - 1].data.right_fork = mutexes + 0;
+	philos[params->numbr_philo - 1].data.right_fork.mutex = mutexes + 0;
 }
 
 void	*do_nothing(void *foo)
@@ -78,7 +78,7 @@ void	join_philos(t_philo *philos, size_t to_join,
 	while (i < to_join)
 		pthread_join(philos[i++].thread, NULL);
 	while (i < to_join)
-		pthread_mutex_destroy(philos[i].data.left_fork);
+		pthread_mutex_destroy(philos[i].data.left_fork.mutex);
 	pthread_mutex_destroy(shared_data_mutex);
 }
 
