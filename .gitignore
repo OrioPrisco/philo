@@ -8,3 +8,4 @@ philo_bonus
 .nfs*
 .gdb_history
 compile_commands.json
+.cache/
