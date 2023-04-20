@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philos.c                                           :+:      :+:    :+:   */
+/*   philos_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 18:30:09 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/20 17:31:48 by orio             ###   ########.fr       */
+/*   Updated: 2023/04/20 18:43:36 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,30 +45,6 @@ void	populate_philos(t_philo *philos, pthread_mutex_t *mutexes,
 	philos[params->numbr_philo - 1].data.right_fork.mutex = mutexes + 0;
 }
 
-void	*do_nothing(void *foo)
-{
-	t_philo_data	*philo;
-
-	philo = foo;
-	pthread_mutex_lock(philo->shared_data_lock);
-	philo->shared_data->hungry_philos -= 1;
-	if (philo->shared_data->hungry_philos == 0)
-	{
-		philo->shared_data->should_stop = 1;
-		pthread_mutex_unlock(philo->shared_data_lock);
-		return (NULL);
-	}
-	pthread_mutex_unlock(philo->shared_data_lock);
-	while (1)
-	{
-		usleep(100);
-		pthread_mutex_lock(philo->shared_data_lock);
-		if (philo->shared_data->should_stop == 1)
-			return (pthread_mutex_unlock(philo->shared_data_lock), NULL);
-		pthread_mutex_unlock(philo->shared_data_lock);
-	}
-}
-
 void	join_philos(t_philo *philos, size_t to_join,
 	pthread_mutex_t *shared_data_mutex)
 {
@@ -90,7 +66,7 @@ _Bool	launch_philos(t_philo *philos, size_t philo_num, t_shared_data *shared,
 	i = 0;
 	while (i < philo_num)
 	{
-		if (pthread_create(&philos[i].thread, NULL, do_nothing,
+		if (pthread_create(&philos[i].thread, NULL, philo_main,
 				&philos[i].data))
 		{
 			pthread_mutex_lock(shared_data_mutex);
