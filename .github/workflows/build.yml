@@ -16,6 +16,6 @@ jobs:
       with:
         submodules: 'true'
     - name: Make libft
-      run: make -C libft LIBS=
+      run: make -C philo/libft LIBS=
     - name: Make philo
-      run: make philo
+      run: make -C philo philo
