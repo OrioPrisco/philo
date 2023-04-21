@@ -6,7 +6,7 @@
 #    By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2023/04/20 18:43:18 by orio             ###   ########.fr        #
+#    Updated: 2023/04/21 14:09:06 by OrioPrisc        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,7 @@ SRC				=	main.c\
 					philos_utils.c\
 					philos_actions.c\
 
-BONUS_SRC		=	
-
 NAME			=	philo
-BONUS			=	philo_bonus
 
 OBJ_FOLDER		=	objs/
 
@@ -41,19 +38,13 @@ SUBMODULES		=	libft/.git\
 
 LFLAGS			=	-Llibft -lft
 
-DEPENDS		:=	$(patsubst %.c,$(OBJ_FOLDER)%.d,$(SRC) $(BONUS_SRC))
+DEPENDS		:=	$(patsubst %.c,$(OBJ_FOLDER)%.d,$(SRC))
 OBJS		:=	$(patsubst %.c,$(OBJ_FOLDER)%.o,$(SRC))
-BONUS_OBJS	:=	$(patsubst %.c,$(OBJ_FOLDER)%.o,$(BONUS_SRC))
-COMMANDS	:=	$(patsubst %.c,$(OBJ_FOLDER)%.cc,$(SRC) $(BONUS_SRC))
+COMMANDS	:=	$(patsubst %.c,$(OBJ_FOLDER)%.cc,$(SRC))
 
 all: $(NAME) compile_commands.json
 
 -include $(DEPENDS)
-
-#bonus: $(BONUS) compile_commands.json
-
-$(BONUS) : $(LIBS) $(BONUS_OBJS)
-	cc $(CFLAGS) $(BONUS_OBJS) $(LFLAGS) -o $@
 
 $(SUBMODULES) :
 	git submodule update --init libft
@@ -78,13 +69,13 @@ compile_commands.json : $(COMMANDS) Makefile
 	@echo "]" >> compile_commands.json
 
 clean: $(SUBMODULES)
-	rm -f $(OBJS) $(BONUS_OBJS) $(DEPENDS) $(COMMANDS)
+	rm -f $(OBJS) $(DEPENDS) $(COMMANDS)
 	for lib in $(shell dirname $(LIBS)); do \
 		make -C $$lib clean; \
 	done
 
 fclean: clean $(SUBMODULES)
-	rm -f $(NAME) $(BONUS) compile_commands.json
+	rm -f $(NAME) compile_commands.json
 	make -C libft fclean
 
 re: fclean all
