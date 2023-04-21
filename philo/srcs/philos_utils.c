@@ -6,7 +6,7 @@
 /*   By: orio <47635210+OrioPrisco@users.noreply.g  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 18:35:05 by orio              #+#    #+#             */
-/*   Updated: 2023/04/20 18:38:25 by orio             ###   ########.fr       */
+/*   Updated: 2023/04/21 16:04:46 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ _Bool	philo_say(t_philo_data *philo, t_action action, _Bool take_lock)
 		pthread_mutex_lock(philo->shared_data_lock);
 	should_stop = philo->shared_data->should_stop;
 	if (!should_stop)
-		printf("%llums %zu %s\n", get_ms_since(philo->params->program_start),
+		printf("%llu %zu %s\n", get_ms_since(philo->params->program_start),
 			philo->philo_id, g_actions[action]);
 	if (take_lock)
 		pthread_mutex_unlock(philo->shared_data_lock);
