@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 18:30:09 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/20 18:43:36 by orio             ###   ########.fr       */
+/*   Updated: 2023/04/24 18:48:41 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	populate_philos(t_philo *philos, pthread_mutex_t *mutexes,
 			params->number_eats,
 		{mutexes + i, 0},
 		{mutexes + i + 1, 0},
-			mutexes + params->numbr_philo,
 			data,
 			params->program_start,
 		};

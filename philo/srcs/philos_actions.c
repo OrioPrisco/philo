@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:32:44 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/24 14:45:51 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/24 18:48:55 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 void	philo_die(t_philo_data *philo)
 {
-	pthread_mutex_lock(philo->shared_data_lock);
+	pthread_mutex_lock(philo->shared_data->lock);
 	philo_say(philo, DIE, 0);
 	philo->shared_data->should_stop = 1;
-	pthread_mutex_unlock(philo->shared_data_lock);
+	pthread_mutex_unlock(philo->shared_data->lock);
 }
 
 //need to unlock forks if we exit because of death

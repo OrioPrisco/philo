@@ -6,7 +6,7 @@
 /*   By: orio <47635210+OrioPrisco@users.noreply.g  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 18:35:05 by orio              #+#    #+#             */
-/*   Updated: 2023/04/24 14:40:02 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/24 18:48:26 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ _Bool	philo_say(t_philo_data *philo, t_action action, _Bool take_lock)
 
 	timestamp = get_ms_since(philo->params->program_start);
 	if (take_lock)
-		pthread_mutex_lock(philo->shared_data_lock);
+		pthread_mutex_lock(philo->shared_data->lock);
 	should_stop = philo->shared_data->should_stop;
 	if (!should_stop)
 	{
@@ -34,7 +34,7 @@ _Bool	philo_say(t_philo_data *philo, t_action action, _Bool take_lock)
 		queue_action(PUSH, &message);
 	}
 	if (take_lock)
-		pthread_mutex_unlock(philo->shared_data_lock);
+		pthread_mutex_unlock(philo->shared_data->lock);
 	return (should_stop);
 }
 
