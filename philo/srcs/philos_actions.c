@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philos2.c                                          :+:      :+:    :+:   */
+/*   philos_actions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:32:44 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/20 18:38:37 by orio             ###   ########.fr       */
+/*   Updated: 2023/04/24 14:45:51 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,9 @@ void	*philo_main(void *data)
 	t_philo_data	*philo;
 
 	philo = data;
+	philo->last_eat = get_ms();
+	if (philo->philo_id % 2)
+		philo_wait_ms(philo, philo->params->time_to_eat);
 	while (1)
 	{
 		if (philo_eat(philo) || philo_sleep(philo) || philo_think(philo))

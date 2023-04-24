@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:53:34 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/20 18:39:09 by orio             ###   ########.fr       */
+/*   Updated: 2023/04/24 12:10:29 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef enum e_action
 	EAT,
 	THINK,
 	DIE,
+	ERROR,
 }	t_action;
 
 //init

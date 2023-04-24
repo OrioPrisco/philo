@@ -6,7 +6,7 @@
 #    By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2023/04/21 14:09:06 by OrioPrisc        ###   ########.fr        #
+#    Updated: 2023/04/24 14:33:35 by OrioPrisc        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,11 @@ SRC				=	main.c\
 					time.c\
 					philos_utils.c\
 					philos_actions.c\
+					printer.c\
+					vector.c\
+					vector2.c\
+					vector3.c\
+					vector4.c\
 
 NAME			=	philo
 
@@ -70,13 +75,11 @@ compile_commands.json : $(COMMANDS) Makefile
 
 clean: $(SUBMODULES)
 	rm -f $(OBJS) $(DEPENDS) $(COMMANDS)
-	for lib in $(shell dirname $(LIBS)); do \
-		make -C $$lib clean; \
-	done
+	make -C libft clean LIBS=
 
 fclean: clean $(SUBMODULES)
 	rm -f $(NAME) compile_commands.json
-	make -C libft fclean
+	make -C libft fclean LIBS=
 
 re: fclean all
 
