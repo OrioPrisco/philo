@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:57:02 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/25 19:24:37 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/25 20:01:33 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ void	*printer_main(void *foo)
 		return (NULL);
 	while (1)
 	{
-		if (print_messages(params, philos) || check_death(params, philos))
+		if (print_messages(params, philos) || check_death(params, philos)
+			|| check_end(params, philos))
 			return (free(philos), NULL);
 	}
 }

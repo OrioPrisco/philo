@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:36:26 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/25 19:23:41 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/25 20:06:33 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,26 @@ _Bool	check_death(const t_params *params, t_philo_monitor *philos)
 	return (0);
 }
 
+_Bool	check_end(const t_params *params, t_philo_monitor *philos)
+{
+	size_t	i;
+
+	if (params->binge_party)
+		return (0);
+	i = 0;
+	while (i < params->numbr_philo)
+	{
+		if (philos[i].eats <= params->number_eats)
+			return (0);
+		i++;
+	}
+	pthread_mutex_lock(params->shared->lock);
+	params->shared->should_stop = 1;
+	pthread_mutex_unlock(params->shared->lock);
+	printf("Everyone ate\n");
+	return (1);
+}
+
 void	update_philo(const t_params *params, t_philo_monitor *philos,
 			t_message *message)
 {
@@ -39,7 +59,8 @@ void	update_philo(const t_params *params, t_philo_monitor *philos,
 		< message->ms + params->time_to_eat)
 		return ;
 	philos[message->id].last_eat = message->ms + params->time_to_eat;
-	philos[message->id].eats++;
+	if (!params->binge_party)
+		philos[message->id].eats++;
 }
 
 void	kill_philo(size_t id, t_ms ms, const t_params *params)
