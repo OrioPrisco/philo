@@ -6,7 +6,7 @@
 /*   By: orio <47635210+OrioPrisco@users.noreply.g  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 18:35:05 by orio              #+#    #+#             */
-/*   Updated: 2023/04/25 18:51:14 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/25 19:05:34 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ _Bool	philo_say(t_philo_data *philo, t_action action)
 	timestamp = get_ms_since(philo->params->program_start);
 	message = (t_message){timestamp, philo->philo_id, action};
 	queue_action(PUSH, &message);
-	return (0);
+	return (message.action == ERROR);
 }
 
 void	take_fork(t_fork *fork)

@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:57:02 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/25 16:49:28 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/25 19:08:54 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ void	queue_action(t_queue_action action, t_message *opt)
 	if (action == POP && queue.size)
 		*opt = vector_pop(&queue, 0);
 	if (action == PUSH)
-		vector_append_elems(&queue, opt, 1);
+	{
+		if (vector_append_elems(&queue, opt, 1))
+			opt->action = ERROR;
+	}
 	if (action == FREE)
 	{
 		vector_clear(&queue);
