@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:53:34 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/25 18:50:08 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/25 19:13:19 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,8 @@ typedef enum e_action
 //init
 void	populate_philos(t_philo *philos, pthread_mutex_t *mutexes,
 			t_shared_data *data, const t_params *params);
-_Bool	launch_philos(t_philo *philos, size_t philo_num, t_shared_data *shared,
-			pthread_mutex_t *shared_data_mutex);
-void	join_philos(t_philo *philos, size_t to_join,
-			pthread_mutex_t *shared_data_mutex);
+_Bool	launch_philos(t_philo *philos, size_t philo_num, t_shared_data *shared);
+void	join_philos(t_philo *philos, size_t to_join, t_shared_data *shared);
 void	*philo_main(void *data);
 //utils
 _Bool	philo_say(t_philo_data *philo, t_action action);
