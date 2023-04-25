@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:32:44 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/25 18:58:33 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/25 20:17:26 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void	*philo_main(void *data)
 	_Bool			run;
 
 	philo = data;
-	philo->last_eat = get_ms();
+	if (philo->params->numbr_philo == 1)
+		return (NULL);
 	if (philo->philo_id % 2)
 		wait_ms(philo->params->time_to_eat);
 	run = 1;
