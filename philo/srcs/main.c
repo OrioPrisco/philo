@@ -37,7 +37,7 @@ int	main(int argc, char **argv)
 	queue_action(INIT, NULL);
 	if (!mutexes || ! philos)
 		return (free(mutexes), free(philos), printf("Malloc error !\n"), 1);
-	pthread_create(&print_thread, NULL, printer_main, NULL);
+	pthread_create(&print_thread, NULL, printer_main, &params);
 	params.program_start = get_ms();
 	populate_philos(philos, mutexes, &shared, &params);
 	if (launch_philos(philos, params.numbr_philo, &shared, shared_m)

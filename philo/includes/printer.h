@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:57:21 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/24 14:01:22 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/24 18:37:10 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,14 @@ typedef enum e_queue_action
 }	t_queue_action;
 
 void	queue_action(t_queue_action action, t_message *opt);
-void	*printer_main(void *_);
+void	*printer_main(void *foo);
+
+//internals
+
+typedef struct s_philo_monitor
+{
+	t_ms	last_eat;
+	size_t	eats;
+}	t_philo_monitor;
 
 #endif
