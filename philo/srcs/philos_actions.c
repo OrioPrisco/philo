@@ -6,13 +6,12 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:32:44 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/24 18:48:55 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/25 15:02:37 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philos.h"
 #include "philo.h"
-#include "shared_data.h"
 #include <stdio.h>
 
 void	philo_die(t_philo_data *philo)

@@ -24,8 +24,6 @@ typedef struct s_message
 	t_action	action;
 }	t_message;
 
-//internals
-
 typedef enum e_queue_action
 {
 	POP,

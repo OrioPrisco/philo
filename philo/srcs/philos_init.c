@@ -6,13 +6,12 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 18:30:09 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/24 18:48:41 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/25 14:54:34 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philos.h"
 #include "philo.h"
-#include "shared_data.h"
 #include <pthread.h>
 #include <unistd.h>
 #include <stdio.h>

@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 11:38:00 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/24 18:45:54 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/25 14:54:20 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include "philos.h"
 #include "debug.h"
 #include "parse.h"
-#include "shared_data.h"
 #include "printer.h"
 
 int	main(int argc, char **argv)
@@ -30,6 +29,7 @@ int	main(int argc, char **argv)
 
 	if (parse_args(&params, argc, argv))
 		return (1);
+	params.shared = &shared;
 	mutexes = ft_calloc(sizeof(*mutexes), params.numbr_philo + 1);
 	shared = (t_shared_data){0, params.numbr_philo, mutexes + params.numbr_philo};
 	philos = ft_calloc(sizeof(*philos), params.numbr_philo);
