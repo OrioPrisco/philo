@@ -6,7 +6,7 @@
 /*   By: orio <47635210+OrioPrisco@users.noreply.g  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 13:19:18 by orio              #+#    #+#             */
-/*   Updated: 2023/04/18 18:12:07 by orio             ###   ########.fr       */
+/*   Updated: 2023/04/25 15:47:56 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,13 @@ t_ms	get_ms(void)
 t_ms	get_ms_since(t_ms time)
 {
 	return (get_ms() - time);
+}
+
+void	wait_ms(t_ms ms)
+{
+	t_ms	begin;
+
+	begin = get_ms();
+	while (get_ms_since(begin) < ms)
+		;
 }

@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:53:34 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/24 18:45:22 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/25 15:47:07 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,9 @@ void	join_philos(t_philo *philos, size_t to_join,
 void	*philo_main(void *data);
 //utils
 _Bool	philo_say(t_philo_data *philo, t_action action, _Bool take_lock);
-_Bool	is_dead(t_philo_data *philo);
 void	take_fork(t_fork *fork);
 void	lay_fork(t_fork *fork);
-_Bool	philo_wait_ms(t_philo_data *philo, t_ms ms);
 //actions
-void	philo_die(t_philo_data *philo);
 _Bool	philo_eat(t_philo_data *philo);
 _Bool	philo_sleep(t_philo_data *philo);
 _Bool	philo_think(t_philo_data *philo);
