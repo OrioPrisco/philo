@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:36:26 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/25 17:06:37 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/25 19:23:41 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "philo.h"
 #include <stdio.h>
 
-_Bool	check_death(t_params *params, t_philo_monitor *philos)
+_Bool	check_death(const t_params *params, t_philo_monitor *philos)
 {
 	size_t	i;
 	t_ms	ms;
@@ -30,7 +30,7 @@ _Bool	check_death(t_params *params, t_philo_monitor *philos)
 	return (0);
 }
 
-void	update_philo(t_params *params, t_philo_monitor *philos,
+void	update_philo(const t_params *params, t_philo_monitor *philos,
 			t_message *message)
 {
 	if (message->action != EAT)
@@ -42,7 +42,7 @@ void	update_philo(t_params *params, t_philo_monitor *philos,
 	philos[message->id].eats++;
 }
 
-void	kill_philo(size_t id, t_ms ms, t_params *params)
+void	kill_philo(size_t id, t_ms ms, const t_params *params)
 {
 	t_message	message;
 

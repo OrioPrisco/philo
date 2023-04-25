@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:57:02 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/25 19:08:54 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/25 19:24:37 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	print_message(t_message *message)
 		g_actions[message->action]);
 }
 
-_Bool	print_messages(t_params *params, t_philo_monitor *philos)
+_Bool	print_messages(const t_params *params, t_philo_monitor *philos)
 {
 	t_message			message;
 
@@ -79,7 +79,7 @@ _Bool	print_messages(t_params *params, t_philo_monitor *philos)
 //TODO : check should_stop
 void	*printer_main(void *foo)
 {
-	t_params			*params;
+	const t_params		*params;
 	t_philo_monitor		*philos;
 
 	params = foo;
