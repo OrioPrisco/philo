@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:57:02 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/25 14:06:57 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/25 16:49:28 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,29 +50,10 @@ static const char	*g_actions[] = {
 	"died",
 };
 
-void	kill_philo(size_t id, t_ms ms, t_params *params)
+void	print_message(t_message *message)
 {
-	printf("%04llu %zu %s\n", ms,
-		id, g_actions[DIE]);
-	pthread_mutex_lock(params->shared->lock);
-	params->shared->should_stop = 1;
-	pthread_mutex_unlock(params->shared->lock);
-}
-
-_Bool	check_death(t_params *params, t_philo_monitor *philos)
-{
-	size_t	i;
-	t_ms	ms;
-
-	ms = get_ms_since(params->program_start);
-	i = 0;
-	while (i < params->numbr_philo)
-	{
-		if (philos[i].last_eat + params->time_to_die < ms)
-			return (kill_philo(i, ms, params), 1);
-		i++;
-	}
-	return (0);
+	printf("%04llu %zu %s\n", message->ms, message->id,
+		g_actions[message->action]);
 }
 
 _Bool	print_messages(t_params *params, t_philo_monitor *philos)
@@ -83,13 +64,8 @@ _Bool	print_messages(t_params *params, t_philo_monitor *philos)
 	queue_action(POP, &message);
 	while (message.action != ERROR)
 	{
-		printf("%04llu %zu %s\n", message.ms,
-			message.id, g_actions[message.action]);
-		if (message.action == EAT)
-		{
-			philos[message.id].last_eat = message.ms + params->time_to_eat;
-			philos[message.id].eats++;
-		}
+		print_message(&message);
+		update_philo(params, philos, &message);
 		queue_action(POP, &message);
 		if (message.action == DIE)
 			return (1);

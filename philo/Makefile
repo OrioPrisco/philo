@@ -6,7 +6,7 @@
 #    By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 11:29:48 by OrioPrisc         #+#    #+#              #
-#    Updated: 2023/04/24 14:33:35 by OrioPrisc        ###   ########.fr        #
+#    Updated: 2023/04/25 16:49:50 by OrioPrisc        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC				=	main.c\
 					philos_utils.c\
 					philos_actions.c\
 					printer.c\
+					monitor.c\
 					vector.c\
 					vector2.c\
 					vector3.c\
