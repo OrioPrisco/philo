@@ -6,7 +6,7 @@
 /*   By: orio <47635210+OrioPrisco@users.noreply.g  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 18:35:05 by orio              #+#    #+#             */
-/*   Updated: 2023/04/25 19:05:34 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/26 22:42:21 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <stdio.h>
 #include "printer.h"
 
-//issue : we might die while trying to take the lock
 _Bool	philo_say(t_philo_data *philo, t_action action)
 {
 	t_message	message;

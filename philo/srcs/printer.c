@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:57:02 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/26 21:52:05 by orio             ###   ########.fr       */
+/*   Updated: 2023/04/26 22:42:33 by orio             ###   ########.fr       */
 /*   Updated: 2023/04/26 20:18:14 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -19,7 +19,6 @@
 #include "libft.h"
 #include "philo.h"
 
-//TODO check vector_append return
 void	queue_action(t_queue_action action, t_message *opt)
 {
 	static t_vector			queue;
@@ -81,7 +80,6 @@ _Bool	print_messages(const t_params *params, t_philo_monitor *philos)
 	return (0);
 }
 
-//TODO : check should_stop
 void	*printer_main(void *foo)
 {
 	const t_params		*params;

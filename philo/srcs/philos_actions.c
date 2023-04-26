@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:32:44 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/26 22:38:18 by orio             ###   ########.fr       */
+/*   Updated: 2023/04/26 22:42:11 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include "philo.h"
 #include <stdio.h>
 
-//need to unlock forks if we exit because of death
-// what if i die while trying to take the lock ?
 _Bool	philo_eat(t_philo_data *philo)
 {
 	if (philo->philo_id % 2)
