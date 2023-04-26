@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:36:26 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/26 22:24:26 by orio             ###   ########.fr       */
+/*   Updated: 2023/04/26 23:14:04 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	update_philo(const t_params *params, t_philo_monitor *philos,
 {
 	if (message->action == EAT
 		&& philos[message->id].last_eat + params->time_to_die
-		> message->ms + params->time_to_eat)
+		>= message->ms + params->time_to_eat)
 		philos[message->id].last_eat = message->ms + params->time_to_eat;
 	if (!params->binge_party && message->action == SLEEP)
 		philos[message->id].eats++;
