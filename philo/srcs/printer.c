@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:57:02 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/25 20:01:33 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/26 20:02:31 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	queue_action(t_queue_action action, t_message *opt)
 	if (action == FREE)
 	{
 		vector_clear(&queue);
+		pthread_mutex_unlock(&mutex);
 		pthread_mutex_destroy(&mutex);
 		return ;
 	}
