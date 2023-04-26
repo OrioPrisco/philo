@@ -50,13 +50,11 @@ _Bool	check_end(const t_params *params, t_philo_monitor *philos)
 void	update_philo(const t_params *params, t_philo_monitor *philos,
 			t_message *message)
 {
-	if (message->action != EAT)
-		return ;
-	if (philos[message->id].last_eat + params->time_to_die
-		< message->ms + params->time_to_eat)
-		return ;
-	philos[message->id].last_eat = message->ms + params->time_to_eat;
-	if (!params->binge_party)
+	if (message->action == EAT
+		&& philos[message->id].last_eat + params->time_to_die
+		> message->ms + params->time_to_eat)
+		philos[message->id].last_eat = message->ms + params->time_to_eat;
+	if (!params->binge_party && message->action == SLEEP)
 		philos[message->id].eats++;
 }
 
