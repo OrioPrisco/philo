@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:57:02 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/26 20:02:31 by orio             ###   ########.fr       */
+/*   Updated: 2023/04/26 20:19:39 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,11 @@ void	*printer_main(void *foo)
 	{
 		if (print_messages(params, philos) || check_death(params, philos)
 			|| check_end(params, philos))
+		{
+			pthread_mutex_lock(params->shared->lock);
+			params->shared->should_stop = 1;
+			pthread_mutex_unlock(params->shared->lock);
 			return (free(philos), NULL);
+		}
 	}
 }

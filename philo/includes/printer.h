@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:57:21 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/25 20:01:12 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/26 20:20:06 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@ void	print_message(t_message *message);
 _Bool	check_death(const t_params *params, t_philo_monitor *philos);
 void	update_philo(const t_params *params, t_philo_monitor *philos,
 			t_message *message);
-void	kill_philo(size_t id, t_ms ms, const t_params *params);
+void	kill_philo(size_t id, t_ms ms);
 _Bool	check_end(const t_params *params, t_philo_monitor *philos);
 #endif

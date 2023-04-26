@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:36:26 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/25 20:06:33 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/26 20:20:59 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ _Bool	check_death(const t_params *params, t_philo_monitor *philos)
 	while (i < params->numbr_philo)
 	{
 		if (philos[i].last_eat + params->time_to_die < ms)
-			return (kill_philo(i, ms, params), 1);
+			return (kill_philo(i, ms), 1);
 		i++;
 	}
 	return (0);
@@ -43,9 +43,6 @@ _Bool	check_end(const t_params *params, t_philo_monitor *philos)
 			return (0);
 		i++;
 	}
-	pthread_mutex_lock(params->shared->lock);
-	params->shared->should_stop = 1;
-	pthread_mutex_unlock(params->shared->lock);
 	printf("Everyone ate\n");
 	return (1);
 }
@@ -63,13 +60,10 @@ void	update_philo(const t_params *params, t_philo_monitor *philos,
 		philos[message->id].eats++;
 }
 
-void	kill_philo(size_t id, t_ms ms, const t_params *params)
+void	kill_philo(size_t id, t_ms ms)
 {
 	t_message	message;
 
 	message = (t_message){ms, id, DIE};
 	print_message(&message);
-	pthread_mutex_lock(params->shared->lock);
-	params->shared->should_stop = 1;
-	pthread_mutex_unlock(params->shared->lock);
 }
