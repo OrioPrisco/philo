@@ -6,7 +6,8 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:57:02 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/26 20:19:39 by orio             ###   ########.fr       */
+/*   Updated: 2023/04/26 21:52:05 by orio             ###   ########.fr       */
+/*   Updated: 2023/04/26 20:18:14 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +71,9 @@ _Bool	print_messages(const t_params *params, t_philo_monitor *philos)
 	{
 		print_message(&message);
 		update_philo(params, philos, &message);
+		if (check_death(params, philos, message.ms)
+			|| check_end(params, philos))
+			return (1);
 		queue_action(POP, &message);
 		if (message.action == DIE)
 			return (1);
@@ -89,7 +93,8 @@ void	*printer_main(void *foo)
 		return (NULL);
 	while (1)
 	{
-		if (print_messages(params, philos) || check_death(params, philos)
+		if (print_messages(params, philos) || check_death(params, philos,
+				get_ms_since(params->program_start))
 			|| check_end(params, philos))
 		{
 			pthread_mutex_lock(params->shared->lock);

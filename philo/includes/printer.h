@@ -6,7 +6,8 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:57:21 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/26 20:20:06 by orio             ###   ########.fr       */
+/*   Updated: 2023/04/26 21:03:58 by orio             ###   ########.fr       */
+/*   Updated: 2023/04/26 20:18:53 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +47,7 @@ typedef struct s_philo_monitor
 void	print_message(t_message *message);
 
 //monitor functions
-_Bool	check_death(const t_params *params, t_philo_monitor *philos);
+_Bool	check_death(const t_params *params, t_philo_monitor *philos, t_ms ms);
 void	update_philo(const t_params *params, t_philo_monitor *philos,
 			t_message *message);
 void	kill_philo(size_t id, t_ms ms);

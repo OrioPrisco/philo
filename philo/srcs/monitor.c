@@ -14,12 +14,10 @@
 #include "philo.h"
 #include <stdio.h>
 
-_Bool	check_death(const t_params *params, t_philo_monitor *philos)
+_Bool	check_death(const t_params *params, t_philo_monitor *philos, t_ms ms)
 {
 	size_t	i;
-	t_ms	ms;
 
-	ms = get_ms_since(params->program_start);
 	i = 0;
 	while (i < params->numbr_philo)
 	{
