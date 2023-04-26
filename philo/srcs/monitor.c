@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:36:26 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/26 20:20:59 by orio             ###   ########.fr       */
+/*   Updated: 2023/04/26 22:24:26 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ _Bool	check_end(const t_params *params, t_philo_monitor *philos)
 	i = 0;
 	while (i < params->numbr_philo)
 	{
-		if (philos[i].eats <= params->number_eats)
+		if (philos[i].eats < params->number_eats)
 			return (0);
 		i++;
 	}
