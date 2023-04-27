@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:57:02 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/26 22:42:33 by orio             ###   ########.fr       */
+/*   Updated: 2023/04/27 11:53:31 by OrioPrisc        ###   ########.fr       */
 /*   Updated: 2023/04/26 20:18:14 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -80,6 +80,14 @@ _Bool	print_messages(const t_params *params, t_philo_monitor *philos)
 	return (0);
 }
 
+void	*end(const t_params *params, t_philo_monitor *philos)
+{
+	pthread_mutex_lock(params->shared->lock);
+	params->shared->should_stop = 1;
+	pthread_mutex_unlock(params->shared->lock);
+	return (free(philos), NULL);
+}
+
 void	*printer_main(void *foo)
 {
 	const t_params		*params;
@@ -88,17 +96,12 @@ void	*printer_main(void *foo)
 	params = foo;
 	philos = ft_calloc(params->numbr_philo, sizeof(*philos));
 	if (!philos)
-		return (NULL);
+		return (end(params, philos));
 	while (1)
 	{
-		if (print_messages(params, philos) || check_death(params, philos,
-				get_ms_since(params->program_start))
+		if (print_messages(params, philos)
+			|| check_death(params, philos, get_ms_since(params->program_start))
 			|| check_end(params, philos))
-		{
-			pthread_mutex_lock(params->shared->lock);
-			params->shared->should_stop = 1;
-			pthread_mutex_unlock(params->shared->lock);
-			return (free(philos), NULL);
-		}
+			return (end(params, philos));
 	}
 }
