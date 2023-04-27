@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:32:44 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/26 22:42:11 by orio             ###   ########.fr       */
+/*   Updated: 2023/04/27 13:15:12 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,13 @@ _Bool	philo_sleep(t_philo_data *philo)
 
 _Bool	philo_think(t_philo_data *philo)
 {
-	return (philo_say(philo, THINK));
+	if (philo_say(philo, THINK))
+		return (1);
+	if (philo->params->time_to_eat > philo->params->time_to_slp)
+		wait_ms(philo->params->time_to_eat - philo->params->time_to_slp);
+	if (philo->params->numbr_philo % 2)
+		wait_ms(philo->params->time_to_eat);
+	return (0);
 }
 
 void	*philo_main(void *data)
