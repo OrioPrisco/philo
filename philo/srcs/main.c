@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 11:38:00 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/26 20:00:55 by orio             ###   ########.fr       */
+/*   Updated: 2023/04/27 16:59:56 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 #include "parse.h"
 #include "printer.h"
 
+void	print_usage(void)
+{
+	printf("Usage : ./philo <number_philo> <time_to_die> <time_to_eat> ");
+	printf("<time_to_sleep> [<number_eats>]\n");
+}
+
 int	main(int argc, char **argv)
 {
 	t_params		params;
@@ -26,7 +32,7 @@ int	main(int argc, char **argv)
 	t_philo			*philos;
 
 	if (parse_args(&params, argc, argv))
-		return (1);
+		return (print_usage(), 1);
 	params.shared = &shared;
 	mutexes = ft_calloc(sizeof(*mutexes), params.numbr_philo + 1);
 	shared = (t_shared_data)
@@ -43,5 +49,6 @@ int	main(int argc, char **argv)
 		printf("Error Launching threads !\n");
 	(free(mutexes), free(philos));
 	queue_action(FREE, NULL);
-	dump_params(&params);
+	if (DEBUG)
+		dump_params(&params);
 }

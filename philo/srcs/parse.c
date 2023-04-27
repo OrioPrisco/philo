@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:58:55 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/18 15:48:24 by orio             ###   ########.fr       */
+/*   Updated: 2023/04/27 16:53:38 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ long	ft_strtol_err(const char *str, _Bool *err, size_t return_size,
 
 	(void)return_size;
 	result = strtol(str, &endptr, 10);
-	if (*endptr)
+	if (*endptr || ft_strtol_check_int(str, endptr, result) || result < 0)
 	{
 		*err = 1;
 		printf("Error while parsing argument #%zu : %s\n", arg_num, str);
@@ -44,6 +44,9 @@ _Bool	parse_args(t_params *params, int argc, char **argv)
 		return (printf("Too many args\n"), 1);
 	params->numbr_philo = ft_strtol_err(argv[1],
 			&err, sizeof(params->numbr_philo), 1);
+	if (!err && params->numbr_philo == 0)
+		printf("Cannot Have 0 philosophers !\n");
+	err |= params->numbr_philo == 0;
 	params->time_to_die = ft_strtol_err(argv[2],
 			&err, sizeof(params->time_to_die), 2);
 	params->time_to_eat = ft_strtol_err(argv[3],

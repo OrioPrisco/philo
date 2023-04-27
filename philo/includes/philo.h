@@ -6,13 +6,16 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:53:34 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/25 14:17:36 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/27 16:59:45 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
+# ifndef DEBUG
+#  define DEBUG 0
+# endif
 # include <stddef.h>
 # include "philo_time.h"
 # include <pthread.h>
