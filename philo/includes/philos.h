@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:53:34 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/25 19:13:19 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/28 12:42:45 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,9 @@ typedef struct s_philo_data
 {
 	const t_params	*params;
 	size_t			philo_id;
-	size_t			number_eats;
 	t_fork			left_fork;
 	t_fork			right_fork;
 	t_shared_data	*shared_data;
-	t_ms			last_eat;
 }	t_philo_data;
 
 typedef struct s_philo

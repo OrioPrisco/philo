@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:32:44 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/27 13:15:12 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/28 12:41:57 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ _Bool	philo_eat(t_philo_data *philo)
 		|| philo_say(philo, EAT))
 		return (lay_fork(&philo->left_fork), lay_fork(&philo->right_fork), 1);
 	wait_ms(philo->params->time_to_eat);
-	philo->last_eat = get_ms();
 	return (0);
 }
 
