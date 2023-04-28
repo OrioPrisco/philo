@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:53:34 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/28 12:42:45 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/28 12:46:07 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct s_philo_data
 	size_t			philo_id;
 	t_fork			left_fork;
 	t_fork			right_fork;
-	t_shared_data	*shared_data;
 }	t_philo_data;
 
 typedef struct s_philo
@@ -53,7 +52,7 @@ typedef enum e_action
 
 //init
 void	populate_philos(t_philo *philos, pthread_mutex_t *mutexes,
-			t_shared_data *data, const t_params *params);
+			const t_params *params);
 _Bool	launch_philos(t_philo *philos, size_t philo_num, t_shared_data *shared);
 void	join_philos(t_philo *philos, size_t to_join, t_shared_data *shared);
 void	*philo_main(void *data);

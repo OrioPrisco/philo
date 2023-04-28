@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 18:30:09 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/28 12:42:40 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/28 12:45:59 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdio.h>
 
 void	populate_philos(t_philo *philos, pthread_mutex_t *mutexes,
-	t_shared_data *data, const t_params *params)
+	const t_params *params)
 {
 	size_t	i;
 
@@ -34,7 +34,6 @@ void	populate_philos(t_philo *philos, pthread_mutex_t *mutexes,
 			i,
 		{mutexes + i, 0},
 		{mutexes + i + 1, 0},
-			data,
 		};
 		i++;
 	}
