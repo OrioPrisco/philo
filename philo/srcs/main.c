@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 11:38:00 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/27 16:59:56 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/28 11:45:07 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 	params.shared = &shared;
 	mutexes = ft_calloc(sizeof(*mutexes), params.numbr_philo + 1);
 	shared = (t_shared_data)
-	{0, params.numbr_philo, mutexes + params.numbr_philo};
+	{0, mutexes + params.numbr_philo};
 	philos = ft_calloc(sizeof(*philos), params.numbr_philo);
 	queue_action(INIT, NULL);
 	if (!mutexes || ! philos)

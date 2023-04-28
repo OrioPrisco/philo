@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:53:34 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/27 16:59:45 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/28 11:44:39 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 typedef struct s_shared_data
 {
 	_Bool			should_stop;
-	size_t			hungry_philos;
 	pthread_mutex_t	*lock;
 }	t_shared_data;
 
