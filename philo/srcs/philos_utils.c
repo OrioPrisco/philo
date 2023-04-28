@@ -6,7 +6,7 @@
 /*   By: orio <47635210+OrioPrisco@users.noreply.g  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 18:35:05 by orio              #+#    #+#             */
-/*   Updated: 2023/04/26 22:42:21 by orio             ###   ########.fr       */
+/*   Updated: 2023/04/28 20:27:32 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdio.h>
 #include "printer.h"
 
-_Bool	philo_say(t_philo_data *philo, t_action action)
+_Bool	philo_say(const t_philo_data *philo, t_action action)
 {
 	t_message	message;
 	t_ms		timestamp;

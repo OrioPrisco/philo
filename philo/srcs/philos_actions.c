@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:32:44 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/28 12:41:57 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/04/28 20:48:10 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ _Bool	philo_sleep(t_philo_data *philo)
 	return (0);
 }
 
-_Bool	philo_think(t_philo_data *philo)
+_Bool	philo_think(const t_philo_data *philo)
 {
 	if (philo_say(philo, THINK))
 		return (1);
