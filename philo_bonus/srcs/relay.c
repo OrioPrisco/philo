@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 21:03:29 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/01 17:05:34 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/01 18:19:48 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ _Bool	populate_relays(t_relay *relays, const t_params *params)
 		if (my_sem_init(&relays[i].philo_sem1, 0)
 			|| my_sem_init(&relays[i].philo_sem2, 0))
 			return (destroy_relays(relays, i), 1);
+		i++;
 	}
 	return (0);
 }
