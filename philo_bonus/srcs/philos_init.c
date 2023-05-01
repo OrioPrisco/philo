@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 18:30:09 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/01 16:55:11 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/01 18:03:31 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	kill_philos(t_philo *philos, size_t to_join)
 
 	i = 0;
 	while (i < to_join)
-		kill(philos[i], SIGKILL);
+		kill(philos[i++], SIGKILL);
 }
 
 void	philo_startup(const t_params *params, t_relay *relays, t_philo *philos,
