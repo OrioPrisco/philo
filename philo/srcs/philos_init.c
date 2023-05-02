@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 18:30:09 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/02 16:50:04 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/02 17:12:46 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ _Bool	launch_philos(t_philo *philos, size_t philo_num, t_shared_data *shared)
 	size_t	i;
 
 	i = 0;
+	pthread_mutex_lock(shared->lock);
 	while (i < philo_num)
 	{
 		if (pthread_create(&philos[i].thread, NULL, philo_main,
 				&philos[i].data))
 		{
-			pthread_mutex_lock(shared->lock);
 			shared->should_stop = 1;
 			pthread_mutex_unlock(shared->lock);
 			return (join_philos(philos, i, shared), 1);

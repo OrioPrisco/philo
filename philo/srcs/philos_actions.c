@@ -6,13 +6,14 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:32:44 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/28 20:48:10 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/02 17:58:21 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philos.h"
 #include "philo.h"
 #include <stdio.h>
+#include <unistd.h>
 
 _Bool	philo_eat(t_philo_data *philo)
 {
@@ -64,6 +65,10 @@ void	*philo_main(void *data)
 	_Bool			run;
 
 	philo = data;
+	pthread_mutex_lock(philo->params->shared->lock);
+	pthread_mutex_unlock(philo->params->shared->lock);
+	while (get_ms() < philo->params->program_start)
+		usleep(1);
 	if (philo->params->numbr_philo == 1)
 		return (NULL);
 	if (philo->philo_id % 2)

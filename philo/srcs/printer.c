@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:57:02 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/02 17:00:46 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/02 18:02:05 by OrioPrisc        ###   ########.fr       */
 /*   Updated: 2023/04/26 20:18:14 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -67,10 +67,14 @@ void	*end(const t_params *params, t_philo_monitor *philos)
 
 void	*printer_main(void *foo)
 {
-	const t_params		*params;
+	t_params			*params;
 	t_philo_monitor		*philos;
 
 	params = foo;
+	params->program_start = get_ms() + 100;
+	pthread_mutex_unlock(params->shared->lock);
+	while (get_ms() < params->program_start)
+		usleep(1);
 	philos = ft_calloc(params->numbr_philo, sizeof(*philos));
 	if (!philos)
 		return (end(params, philos));
