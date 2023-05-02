@@ -6,12 +6,13 @@
 /*   By: orio <47635210+OrioPrisco@users.noreply.g  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 13:19:18 by orio              #+#    #+#             */
-/*   Updated: 2023/04/25 15:47:56 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/02 17:17:18 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_time.h"
 #include <sys/time.h>
+#include <unistd.h>
 
 t_ms	get_ms(void)
 {
@@ -32,5 +33,5 @@ void	wait_ms(t_ms ms)
 
 	begin = get_ms();
 	while (get_ms_since(begin) < ms)
-		;
+		usleep(1);
 }
