@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:53:34 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/28 11:44:39 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/02 16:46:54 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,14 @@
 # include <stddef.h>
 # include "philo_time.h"
 # include <pthread.h>
+# include "vector.h"
 
 typedef struct s_shared_data
 {
 	_Bool			should_stop;
 	pthread_mutex_t	*lock;
+	t_vector		queue;
+	pthread_mutex_t	*queue_lock;
 }	t_shared_data;
 
 typedef struct s_params

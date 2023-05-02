@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:57:02 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/27 11:53:31 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/02 17:00:46 by OrioPrisc        ###   ########.fr       */
 /*   Updated: 2023/04/26 20:18:14 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -18,33 +18,6 @@
 #include <stdio.h>
 #include "libft.h"
 #include "philo.h"
-
-void	queue_action(t_queue_action action, t_message *opt)
-{
-	static t_vector			queue;
-	static pthread_mutex_t	mutex;
-
-	if (action == INIT)
-		pthread_mutex_init(&mutex, NULL);
-	pthread_mutex_lock(&mutex);
-	if (action == POP && !queue.size)
-		opt->action = ERROR;
-	if (action == POP && queue.size)
-		*opt = vector_pop(&queue, 0);
-	if (action == PUSH)
-	{
-		if (vector_append_elems(&queue, opt, 1))
-			opt->action = ERROR;
-	}
-	if (action == FREE)
-	{
-		vector_clear(&queue);
-		pthread_mutex_unlock(&mutex);
-		pthread_mutex_destroy(&mutex);
-		return ;
-	}
-	pthread_mutex_unlock(&mutex);
-}
 
 static const char	*g_actions[] = {
 	"has taken a fork",
@@ -65,18 +38,22 @@ _Bool	print_messages(const t_params *params, t_philo_monitor *philos)
 	t_message			message;
 
 	usleep(500);
-	queue_action(POP, &message);
-	while (message.action != ERROR)
+	pthread_mutex_lock(params->shared->queue_lock);
+	while (params->shared->queue.size)
 	{
+		message = vector_pop(&params->shared->queue, 0);
+		pthread_mutex_unlock(params->shared->queue_lock);
 		print_message(&message);
 		update_philo(params, philos, &message);
 		if (check_death(params, philos, message.ms)
 			|| check_end(params, philos))
+		{
+			pthread_mutex_unlock(params->shared->queue_lock);
 			return (1);
-		queue_action(POP, &message);
-		if (message.action == DIE)
-			return (1);
+		}
+		pthread_mutex_lock(params->shared->queue_lock);
 	}
+	pthread_mutex_unlock(params->shared->queue_lock);
 	return (0);
 }
 

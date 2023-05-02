@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 11:38:00 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/28 12:46:42 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/02 17:01:31 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ int	main(int argc, char **argv)
 	if (parse_args(&params, argc, argv))
 		return (print_usage(), 1);
 	params.shared = &shared;
-	mutexes = ft_calloc(sizeof(*mutexes), params.numbr_philo + 1);
+	mutexes = ft_calloc(sizeof(*mutexes), params.numbr_philo + 2);
 	shared = (t_shared_data)
-	{0, mutexes + params.numbr_philo};
+	{0, mutexes + params.numbr_philo,
+	{0, 0, 0}, mutexes + params.numbr_philo + 1};
 	philos = ft_calloc(sizeof(*philos), params.numbr_philo);
-	queue_action(INIT, NULL);
 	if (!mutexes || ! philos)
 		return (free(mutexes), free(philos), printf("Malloc error !\n"), 1);
 	params.program_start = get_ms();
@@ -48,7 +48,7 @@ int	main(int argc, char **argv)
 		|| (join_philos(philos, params.numbr_philo, &shared), 0))
 		printf("Error Launching threads !\n");
 	(free(mutexes), free(philos));
-	queue_action(FREE, NULL);
+	vector_clear(&shared.queue);
 	if (DEBUG)
 		dump_params(&params);
 }

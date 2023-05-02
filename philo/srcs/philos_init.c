@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 18:30:09 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/28 12:45:59 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/02 16:50:04 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	populate_philos(t_philo *philos, pthread_mutex_t *mutexes,
 	size_t	i;
 
 	i = 0;
-	while (i < params->numbr_philo + 1)
+	while (i < params->numbr_philo + 2)
 	{
 		pthread_mutex_init(mutexes + i++, NULL);
 	}

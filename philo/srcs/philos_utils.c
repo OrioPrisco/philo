@@ -6,7 +6,7 @@
 /*   By: orio <47635210+OrioPrisco@users.noreply.g  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 18:35:05 by orio              #+#    #+#             */
-/*   Updated: 2023/04/28 20:27:32 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/02 16:59:55 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,14 @@ _Bool	philo_say(const t_philo_data *philo, t_action action)
 {
 	t_message	message;
 	t_ms		timestamp;
+	_Bool		err;
 
+	pthread_mutex_lock(philo->params->shared->queue_lock);
 	timestamp = get_ms_since(philo->params->program_start);
 	message = (t_message){timestamp, philo->philo_id, action};
-	queue_action(PUSH, &message);
-	return (message.action == ERROR);
+	err = vector_append(&philo->params->shared->queue, message);
+	pthread_mutex_unlock(philo->params->shared->queue_lock);
+	return (err);
 }
 
 void	take_fork(t_fork *fork)
