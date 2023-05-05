@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:57:02 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/05 16:32:27 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/05 18:05:26 by OrioPrisc        ###   ########.fr       */
 /*   Updated: 2023/04/26 20:18:14 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -49,7 +49,7 @@ _Bool	print_messages(const t_params *params, t_philo_monitor *philos,
 		update_philo(params, philos, &message);
 		if (check_death(params, philos, message.ms)
 			|| check_end(params, philos))
-			return (sem_wait(params->semaphores.queue_sem), 1);
+			return (1);
 		sem_wait(params->semaphores.queue_sem);
 	}
 	sem_post(params->semaphores.queue_sem);
