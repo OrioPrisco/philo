@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:57:02 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/05 12:30:14 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/05 13:04:51 by OrioPrisc        ###   ########.fr       */
 /*   Updated: 2023/04/26 20:18:14 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -19,32 +19,6 @@
 #include "libft.h"
 #include "philo.h"
 #include "philo_sem.h"
-
-void	queue_action(t_queue_action action, t_message *opt)
-{
-	static t_vector			queue;
-	static sem_t			*mutex;
-
-	if (action == INIT)
-		my_sem_init(&mutex, 1);
-	sem_wait(mutex);
-	if (action == POP && !queue.size)
-		opt->action = ERROR;
-	if (action == POP && queue.size)
-		*opt = vector_pop(&queue, 0);
-	if (action == PUSH)
-	{
-		if (vector_append_elems(&queue, opt, 1))
-			opt->action = ERROR;
-	}
-	if (action == FREE)
-	{
-		vector_clear(&queue);
-		my_sem_close(mutex);
-		return ;
-	}
-	sem_post(mutex);
-}
 
 static const char	*g_actions[] = {
 	"has taken a fork",
@@ -60,23 +34,25 @@ void	print_message(t_message *message)
 		g_actions[message->action]);
 }
 
-_Bool	print_messages(const t_params *params, t_philo_monitor *philos)
+_Bool	print_messages(const t_params *params, t_philo_monitor *philos,
+			t_vector *vec)
 {
 	t_message			message;
 
 	usleep(500);
-	queue_action(POP, &message);
-	while (message.action != ERROR)
+	sem_wait(params->semaphores.queue_sem);
+	while (vec->size)
 	{
+		message = vector_pop(vec, 0);
+		sem_post(params->semaphores.queue_sem);
 		print_message(&message);
 		update_philo(params, philos, &message);
 		if (check_death(params, philos, message.ms)
 			|| check_end(params, philos))
-			return (1);
-		queue_action(POP, &message);
-		if (message.action == DIE)
-			return (1);
+			return (sem_wait(params->semaphores.queue_sem), 1);
+		sem_wait(params->semaphores.queue_sem);
 	}
+	sem_post(params->semaphores.queue_sem);
 	return (0);
 }
 
@@ -86,7 +62,7 @@ void	end(const t_params *params, t_philo_monitor *philos)
 	free(philos);
 }
 
-void	printer_main(const t_params *params)
+void	printer_main(const t_params *params, t_vector *vec)
 {
 	t_philo_monitor		*philos;
 
@@ -95,7 +71,7 @@ void	printer_main(const t_params *params)
 		return (end(params, philos));
 	while (1)
 	{
-		if (print_messages(params, philos)
+		if (print_messages(params, philos, vec)
 			|| check_death(params, philos, get_ms_since(params->program_start))
 			|| check_end(params, philos))
 			return (end(params, philos));

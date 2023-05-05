@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:57:21 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/05 12:30:40 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/05 12:49:26 by OrioPrisc        ###   ########.fr       */
 /*   Updated: 2023/04/26 20:18:53 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -18,6 +18,8 @@
 # include "philo_time.h"
 # include "philos.h"
 
+typedef struct s_vector	t_vector;
+
 typedef struct s_message
 {
 	t_ms		ms;
@@ -25,16 +27,7 @@ typedef struct s_message
 	t_action	action;
 }	t_message;
 
-typedef enum e_queue_action
-{
-	POP,
-	PUSH,
-	FREE,
-	INIT,
-}	t_queue_action;
-
-void	queue_action(t_queue_action action, t_message *opt);
-void	printer_main(const t_params *params);
+void	printer_main(const t_params *params, t_vector *queue);
 
 //internals
 

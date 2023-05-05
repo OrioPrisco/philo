@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 21:03:29 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/01 18:20:30 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/05 13:44:09 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "philo_sem.h"
 #include "philos.h"
 #include "printer.h"
+#include "vector.h"
 
 static const t_action	g_actions[] = {
 	TAKE_FORK,
@@ -36,9 +37,11 @@ void	*relay_main(void *data)
 	while (1)
 	{
 		sem_wait(relay->philo_sem1);
+		sem_wait(relay->params->semaphores.queue_sem);
 		message = (t_message){get_ms_since(relay->params->program_start),
 			relay->id, g_actions[step]};
-		queue_action(PUSH, &message);
+		vector_append(relay->queue, message);
+		sem_post(relay->params->semaphores.queue_sem);
 		sem_post(relay->philo_sem2);
 		step++;
 		step %= sizeof(g_actions) / sizeof(g_actions[0]);
@@ -60,7 +63,7 @@ void	destroy_relays(t_relay *relays, size_t to_destroy)
 	}
 }
 
-_Bool	populate_relays(t_relay *relays, const t_params *params)
+_Bool	populate_relays(t_relay *relays, const t_params *params, t_vector *vec)
 {
 	size_t	i;
 
@@ -71,6 +74,7 @@ _Bool	populate_relays(t_relay *relays, const t_params *params)
 			|| my_sem_init(&relays[i].philo_sem2, 0))
 			return (destroy_relays(relays, i), 1);
 		relays[i].params = params;
+		relays[i].queue = vec;
 		i++;
 	}
 	return (0);

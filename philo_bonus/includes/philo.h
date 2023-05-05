@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:53:34 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/01 16:21:26 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/05 12:35:13 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 typedef struct s_semaphores
 {
-	sem_t	*print_sem;
+	sem_t	*queue_sem;
 	sem_t	*stop_sem;
 	sem_t	*forks;
 }	t_semaphores;
