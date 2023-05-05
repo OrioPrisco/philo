@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:57:02 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/01 16:30:32 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/05 12:30:14 by OrioPrisc        ###   ########.fr       */
 /*   Updated: 2023/04/26 20:18:14 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -80,18 +80,16 @@ _Bool	print_messages(const t_params *params, t_philo_monitor *philos)
 	return (0);
 }
 
-void	*end(const t_params *params, t_philo_monitor *philos)
+void	end(const t_params *params, t_philo_monitor *philos)
 {
 	sem_post(params->semaphores.stop_sem);
-	return (free(philos), NULL);
+	free(philos);
 }
 
-void	*printer_main(void *foo)
+void	printer_main(const t_params *params)
 {
-	const t_params		*params;
 	t_philo_monitor		*philos;
 
-	params = foo;
 	philos = ft_calloc(params->numbr_philo, sizeof(*philos));
 	if (!philos)
 		return (end(params, philos));
