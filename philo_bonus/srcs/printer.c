@@ -56,13 +56,15 @@ _Bool	print_messages(const t_params *params, t_philo_monitor *philos,
 	return (0);
 }
 
-void	end(const t_params *params, t_philo_monitor *philos)
+void	end(t_params *params, t_philo_monitor *philos)
 {
+	sem_wait(params->semaphores.stop_sem);
+	params->stop = 1;
 	sem_post(params->semaphores.stop_sem);
 	free(philos);
 }
 
-void	printer_main(const t_params *params, t_vector *vec)
+void	printer_main(t_params *params, t_vector *vec)
 {
 	t_philo_monitor		*philos;
 

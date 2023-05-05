@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 21:03:29 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/05 16:33:44 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/05 18:04:01 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,27 @@ void	*relay_main(void *data)
 {
 	t_relay		*relay;
 	size_t		step;
-	t_message	message;
+	_Bool		run;
 
+	run = 1;
 	step = 0;
 	relay = data;
 	while (get_ms() < relay->params->program_start)
 		usleep(1);
-	while (1)
+	while (run)
 	{
 		sem_wait(relay->philo_sem1);
 		sem_wait(relay->params->semaphores.queue_sem);
-		message = (t_message){get_ms_since(relay->params->program_start),
-			relay->id, g_actions[step]};
-		vector_append(relay->queue, message);
+		vector_append(relay->queue,
+			(t_message){get_ms_since(relay->params->program_start),
+			relay->id, g_actions[step]});
 		sem_post(relay->params->semaphores.queue_sem);
 		sem_post(relay->philo_sem2);
 		step++;
 		step %= sizeof(g_actions) / sizeof(g_actions[0]);
+		sem_wait(relay->params->semaphores.stop_sem);
+		run = !relay->params->stop;
+		sem_post(relay->params->semaphores.stop_sem);
 	}
 	return (NULL);
 }
@@ -84,7 +88,7 @@ _Bool	populate_relays(t_relay *relays, const t_params *params, t_vector *vec)
 	return (0);
 }
 
-_Bool	launch_relays(t_relay *relays, const t_params *params)
+_Bool	launch_relays(t_relay *relays, t_params *params)
 {
 	size_t	i;
 
@@ -94,7 +98,9 @@ _Bool	launch_relays(t_relay *relays, const t_params *params)
 		if (pthread_create(&relays[i].thread, NULL, relay_main,
 				&relays[i]))
 		{
-			sem_post(params->semaphores.stop_sem);
+			sem_wait(params->semaphores.stop_sem);
+			params->stop = 1;
+			sem_wait(params->semaphores.stop_sem);
 			return (join_relays(relays, i), 1);
 		}
 		i++;

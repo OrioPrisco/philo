@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:58:55 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/05 12:34:51 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/05 17:42:01 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ _Bool	init_sems(t_params *params)
 {
 	return (0
 		|| my_sem_init(&params->semaphores.queue_sem, 1)
-		|| my_sem_init(&params->semaphores.stop_sem, 0)
+		|| my_sem_init(&params->semaphores.stop_sem, 1)
 		|| my_sem_init(&params->semaphores.forks, params->numbr_philo)
 	);
 }

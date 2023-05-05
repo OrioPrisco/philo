@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:53:34 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/05 12:35:13 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/05 17:21:18 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_params
 	_Bool			binge_party;
 	size_t			number_eats;
 	t_ms			program_start;
+	_Bool			stop;
 	t_semaphores	semaphores;
 }	t_params;
 

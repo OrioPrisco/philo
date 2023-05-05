@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:57:21 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/05 12:49:26 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/05 17:27:36 by OrioPrisc        ###   ########.fr       */
 /*   Updated: 2023/04/26 20:18:53 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -27,7 +27,7 @@ typedef struct s_message
 	t_action	action;
 }	t_message;
 
-void	printer_main(const t_params *params, t_vector *queue);
+void	printer_main(t_params *params, t_vector *queue);
 
 //internals
 

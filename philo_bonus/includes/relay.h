@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 17:45:56 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/05 13:11:46 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/05 17:25:38 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_relay
 
 void	destroy_relays(t_relay *relays, size_t to_destroy);
 _Bool	populate_relays(t_relay *relays, const t_params *params, t_vector *vec);
-_Bool	launch_relays(t_relay *relays, const t_params *params);
+_Bool	launch_relays(t_relay *relays, t_params *params);
 void	join_relays(t_relay *relays, size_t nb_relays);
 void	*relay_main(void *relay);
 
