@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:57:02 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/05 13:04:51 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/05 16:32:27 by OrioPrisc        ###   ########.fr       */
 /*   Updated: 2023/04/26 20:18:14 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -66,6 +66,8 @@ void	printer_main(const t_params *params, t_vector *vec)
 {
 	t_philo_monitor		*philos;
 
+	while (get_ms() < params->program_start)
+		usleep(1);
 	philos = ft_calloc(params->numbr_philo, sizeof(*philos));
 	if (!philos)
 		return (end(params, philos));

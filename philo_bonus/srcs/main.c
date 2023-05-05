@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 11:38:00 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/05 13:12:03 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/05 16:31:34 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 	vector_init(&queue);
 	if (!relays || ! philos)
 		return (free(relays), free(philos), printf("Malloc error !\n"), 1);
-	params.program_start = get_ms();
+	params.program_start = get_ms() + 100;
 	populate_relays(relays, &params, &queue);
 	if (launch_philos(philos, &params, relays)
 		|| (launch_relays(relays, &params)

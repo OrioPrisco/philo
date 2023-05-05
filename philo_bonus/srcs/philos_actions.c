@@ -6,13 +6,14 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:32:44 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/01 16:53:18 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/05 16:34:47 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philos.h"
 #include "philo.h"
 #include <stdio.h>
+#include <unistd.h>
 
 void	philo_eat(t_philo_data *philo)
 {
@@ -45,6 +46,8 @@ void	philo_main(t_philo_data *philo)
 {
 	if (philo->params->numbr_philo == 1)
 		return ;
+	while (get_ms() < philo->params->program_start)
+		usleep(1);
 	if (philo->philo_id % 2)
 		wait_ms(philo->params->time_to_eat);
 	while (1)

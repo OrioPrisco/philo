@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 21:03:29 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/05 16:13:18 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/05 16:33:44 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "philos.h"
 #include "printer.h"
 #include "vector.h"
+#include <unistd.h>
 
 static const t_action	g_actions[] = {
 	TAKE_FORK,
@@ -34,6 +35,8 @@ void	*relay_main(void *data)
 
 	step = 0;
 	relay = data;
+	while (get_ms() < relay->params->program_start)
+		usleep(1);
 	while (1)
 	{
 		sem_wait(relay->philo_sem1);
