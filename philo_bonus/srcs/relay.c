@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 21:03:29 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/05 13:44:09 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/05 16:13:18 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ _Bool	populate_relays(t_relay *relays, const t_params *params, t_vector *vec)
 			return (destroy_relays(relays, i), 1);
 		relays[i].params = params;
 		relays[i].queue = vec;
+		relays[i].id = i;
 		i++;
 	}
 	return (0);
