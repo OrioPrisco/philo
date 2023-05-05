@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:53:34 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/05 17:21:18 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/05 18:16:51 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,5 @@ typedef struct s_params
 	t_semaphores	semaphores;
 }	t_params;
 
+void	destroy_sems(t_semaphores *sems);
 #endif

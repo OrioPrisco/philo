@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 18:30:09 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/01 18:03:31 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/05 18:24:39 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ void	philo_startup(const t_params *params, t_relay *relays, t_philo *philos,
 	destroy_relays(relays, params->numbr_philo);
 	free(relays);
 	free(philos);
+	my_sem_close(params->semaphores.queue_sem);
+	my_sem_close(params->semaphores.stop_sem);
 	philo_main(&philo);
+	my_sem_close(params->semaphores.forks);
 	exit(0);
 }
 

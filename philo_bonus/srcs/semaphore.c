@@ -6,11 +6,12 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 12:13:51 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/01 16:19:57 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/05 18:16:36 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_sem.h"
+#include "philo.h"
 #include "libft.h"
 #include <fcntl.h>
 #include <sys/stat.h>
@@ -30,4 +31,11 @@ void	my_sem_close(sem_t *sem)
 	if (sem == NULL || sem == SEM_FAILED)
 		return ;
 	sem_close(sem);
+}
+
+void	destroy_sems(t_semaphores *sems)
+{
+	my_sem_close(sems->queue_sem);
+	my_sem_close(sems->stop_sem);
+	my_sem_close(sems->forks);
 }
