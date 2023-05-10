@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:36:26 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/04/26 23:14:04 by orio             ###   ########.fr       */
+/*   Updated: 2023/05/10 16:28:06 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ _Bool	check_end(const t_params *params, t_philo_monitor *philos)
 			return (0);
 		i++;
 	}
-	printf("Everyone ate\n");
+	if (DEBUG)
+		printf("Everyone ate\n");
 	return (1);
 }
 
