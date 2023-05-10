@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:57:02 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/02 18:02:05 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/10 14:19:17 by OrioPrisc        ###   ########.fr       */
 /*   Updated: 2023/04/26 20:18:14 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -47,10 +47,7 @@ _Bool	print_messages(const t_params *params, t_philo_monitor *philos)
 		update_philo(params, philos, &message);
 		if (check_death(params, philos, message.ms)
 			|| check_end(params, philos))
-		{
-			pthread_mutex_unlock(params->shared->queue_lock);
 			return (1);
-		}
 		pthread_mutex_lock(params->shared->queue_lock);
 	}
 	pthread_mutex_unlock(params->shared->queue_lock);
