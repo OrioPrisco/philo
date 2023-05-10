@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 11:38:00 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/05 18:21:54 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/10 15:37:03 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,4 @@ int	main(int argc, char **argv)
 		printf("Error Launching threads and/or process !\n");
 	(free(relays), free(philos), vector_clear(&queue));
 	destroy_sems(&params.semaphores);
-	DEBUG && (dump_params(&params), 0);
 }
