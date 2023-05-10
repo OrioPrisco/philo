@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 21:03:29 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/05 18:04:01 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/10 15:16:57 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void	join_relays(t_relay *relays, size_t nb_relays)
 	i = 0;
 	while (i < nb_relays)
 	{
+		sem_post(relays[i].philo_sem1);
 		pthread_join(relays[i++].thread, NULL);
 	}
 }
