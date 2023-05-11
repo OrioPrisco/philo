@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:57:02 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/05 18:05:26 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/11 12:14:24 by OrioPrisc        ###   ########.fr       */
 /*   Updated: 2023/04/26 20:18:14 by orio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -30,7 +30,7 @@ static const char	*g_actions[] = {
 
 void	print_message(t_message *message)
 {
-	printf("%04llu %zu %s\n", message->ms, message->id,
+	printf("%04llu %03zu %s\n", message->ms, message->id,
 		g_actions[message->action]);
 }
 
