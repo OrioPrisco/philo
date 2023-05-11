@@ -6,7 +6,7 @@
 /*   By: orio <47635210+OrioPrisco@users.noreply.g  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 13:19:18 by orio              #+#    #+#             */
-/*   Updated: 2023/05/10 17:41:22 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/11 12:02:16 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,16 @@ t_ms	get_ms_since(t_ms time)
 void	wait_ms(t_ms ms)
 {
 	t_ms	begin;
+	t_ms	waited;
+	t_ms	diff;
 
 	begin = get_ms();
-	while (get_ms_since(begin) < ms)
-		usleep(50);
+	while (1)
+	{
+		waited = get_ms_since(begin);
+		if (waited >= ms)
+			return ;
+		diff = ms - waited;
+		usleep(diff * 500);
+	}
 }
