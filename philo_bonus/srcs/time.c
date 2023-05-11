@@ -6,7 +6,7 @@
 /*   By: orio <47635210+OrioPrisco@users.noreply.g  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 13:19:18 by orio              #+#    #+#             */
-/*   Updated: 2023/05/02 18:22:18 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/10 17:41:22 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ void	wait_ms(t_ms ms)
 
 	begin = get_ms();
 	while (get_ms_since(begin) < ms)
-		usleep(1);
+		usleep(50);
 }
