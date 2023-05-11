@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:58:55 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/05/05 17:42:01 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/05/11 14:16:51 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ long	ft_strtol_err(const char *str, _Bool *err, size_t return_size,
 	long	result;
 
 	(void)return_size;
-	result = strtol(str, &endptr, 10);
+	result = ft_strtol(str, &endptr, 10);
 	if (*endptr || ft_strtol_check_int(str, endptr, result) || result < 0)
 	{
 		*err = 1;
