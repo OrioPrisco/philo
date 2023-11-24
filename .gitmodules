@@ -4,3 +4,9 @@
 [submodule "philo_bonus/libft"]
 	path = philo_bonus/libft
 	url = git@github.com:OrioPrisco/libft_pub
+[submodule "newer_libft"]
+	path = philo/libft
+	url = https://github.com/OrioPrisco/libft.git
+[submodule "philo_bonus/newer_libft"]
+	path = philo_bonus/libft
+	url = https://github.com/OrioPrisco/libft.git
